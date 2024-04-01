@@ -1,0 +1,41 @@
+#:import Window kivy.core.window.Window
+MDScreen:
+    name: "camera"
+    MDFloatLayout:
+        md_bg_color: 1,1,1,1
+        Image:
+            source: 'images/musify.png'
+            pos_hint: {'center_x': 0.5,'center_y': .85}
+        MDLabel:
+            text: "Let me check how are you feeling"
+            font_name: "Poppinsl"
+            font_size: "14sp"
+            pos_hint: {"center_y": .75}
+            halign: "center"
+            color: rgba(34, 34, 34, 255)
+        MDBoxLayout:
+            Camera:
+                id: camera_id
+                resolution: (640, 480)  # Adjust the resolution as needed
+                # pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+                play: True
+                size_hint: (1, 1)  # Take the entire available space
+
+        Button:
+            text: "Music Mood Check"
+            size_hint: .66, .065
+            pos_hint: {"center_x": .5, "center_y": .18}
+            background_color: 0, 0, 0, 0
+            font_name: "Poppinsl"
+            on_release: 
+                app.capture_image() # Define a method in your Dtreaty class to handle image capture
+                root.manager.current = "song_recommend"
+                app.create_list_items(app.root.get_screen("song_recommend"), app.label)
+            canvas.before:
+                Color:
+                    rgb: rgba(151, 50, 50, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [7]
+        

@@ -1,0 +1,42 @@
+
+MDScreen:
+    name: "song_recommend"
+    MDFloatLayout:
+        md_bg_color: 1,1,1,1
+
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {"center_y": .95}
+            user_font_size: "30sp"  # Corrected property name
+            theme_text_color: "Custom"
+            text_color: [0, 0, 0, 1]
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "camera"
+
+        Image:
+            source: "images/listen.png"
+            pos_hint: {'center_x': 0.5,'center_y': 0.8}
+
+        # the new code
+
+        
+        MDBoxLayout:
+            orientation: 'vertical'
+            MDFloatLayout:
+                MDLabel:
+                    text: app.label
+                    font_name: "Poppins"
+                    font_size: "18sp"
+                    pos_hint: {"center_y": .12}
+                    halign: "center"
+                    color: rgba(34, 34, 34, 255)
+            BoxLayout:
+                padding: dp(16)
+                ScrollView:
+                    MDList:
+                        spacing: dp(5)
+                        id: md_list
+                            
+
+        

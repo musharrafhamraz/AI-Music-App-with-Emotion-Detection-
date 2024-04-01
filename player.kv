@@ -1,0 +1,88 @@
+MDScreen:
+    name: "player"
+    MDFloatLayout:
+        md_bg_color: 1,1,1,1
+
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {"center_y": .95}
+            user_font_size: "30sp"  # Corrected property name
+            theme_text_color: "Custom"
+            text_color: [0, 0, 0, 1]
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "song_recommend"
+
+        Widget:
+            size_hint: None, None
+            size: dp(200), dp(200)
+            pos_hint: {"center_x": 0.5, "center_y": 0.7}
+
+            canvas:
+                Ellipse:
+                    pos: self.pos
+                    size: self.size
+
+        Image:
+            source: "images\song_logo.png"  # Replace with your image source
+            size_hint: None, None
+            size: dp(180), dp(180)
+            pos_hint: {"center_x": 0.5, "center_y": 0.7}
+
+        MDLabel:
+            text: "{}".format(app.song_name)
+            font_name: "Poppins"
+            font_size: "18sp"
+            pos_hint: {"center_y": .5}
+            halign: "center"
+            color: rgba(34, 34, 34, 255)
+
+        MDLabel:
+            text: "{}".format(app.song_artist)
+            font_name: "Poppinsl"
+            font_size: "14sp"
+            pos_hint: {"center_y": .45}
+            halign: "center"
+            color: rgba(34, 34, 34, 255)
+        
+
+        ProgressBar:
+            value: 30  # Set the initial value
+            max: 100
+            size_hint_y: None
+            height: dp(2)
+            pos_hint: {"center_x": 0.5, "center_y": 0.33}
+
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {"center_y": .2, "center_x": .25}
+            size: [dp(30), dp(30)]
+            theme_text_color: "Custom"
+            text_color: [0, 0, 0, 1]
+
+        MDFloatingActionButton:
+            id: play_button
+            icon: "play"
+            pos_hint: {'center_x': 0.5,'center_y': 0.2}
+            on_release: app.on_play_button_release()
+
+        MDIconButton:
+            icon: "arrow-right"
+            pos_hint: {"center_y": .2, "center_x": .75}
+            size: [dp(30), dp(30)]
+            theme_text_color: "Custom"
+            text_color: [0, 0, 0, 1]
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
